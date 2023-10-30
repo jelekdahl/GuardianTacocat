@@ -61,12 +61,15 @@ footer .bi:hover {
   /* box-shadow: ; */
 }
 
-.codeHeader {
+.code-header,
+.je-button {
   background-color: var(--je-primary-color);
   color: var(--je-light-color);
 }
 
-.codeHeader:hover {
+.code-header:hover,
+.je-button:hover,
+.je-button:focus {
   background-color: var(--je-secondary-color);
   color: var(--je-dark-color);
 }
