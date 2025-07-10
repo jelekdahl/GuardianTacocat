@@ -3,12 +3,12 @@
   <defs id="SvgjsDefs3641">
     <bx:grid x="-4.921" y="0" width="89.543" height="90.158"/>
   </defs>
-  <rect x="-5" y="0" width="360" height="360" style="fill: #f6f6f6;"/>
+  <rect x="-5" y="0" width="360" height="360" style="fill: #ffffff;"/>
   <g transform="matrix(1, 0, 0, 1, 0.000015, -1.43325)">
     <g id="SvgjsG3642" featurekey="symbolGroupContainer" transform="matrix(1.971456, 0, 0, 1.971456, 76.427201, 45.164895)" fill="#236B23" style="">
       <circle xmlns="http://www.w3.org/2000/svg" cx="50" cy="50" r="50"/>
     </g>
-    <g id="SvgjsG3643" featurekey="DUScZC-0" transform="matrix(1.511452, 0, 0, 1.511452, 99.426652, 68.605279)" fill="#f6f6f6" style="">
+    <g id="SvgjsG3643" featurekey="DUScZC-0" transform="matrix(1.511452, 0, 0, 1.511452, 99.426652, 68.605279)" fill="#ffffff" style="">
       <g xmlns="http://www.w3.org/2000/svg">
         <polygon points="54.793,78.123 51.608,78.794 50,80.585 48.392,78.794 45.207,78.123 47.983,79.872 49.993,82.42 49.993,82.438    50,82.429 50.008,82.438 50.008,82.42 52.019,79.872  "/>
         <g>
