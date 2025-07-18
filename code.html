@@ -69,174 +69,176 @@
     <h1 class="border-bottom border-2 border-dark">The Code</h1>
 
     <div class="my-3">
-      <p class="h6">Click the buttons to hide/show the corresponding code excerpts.</p>
+      <p class="h6">Click the headers below to hide/show the corresponding code excerpts.</p>
     </div>
 
-    <!-- Function: getValues -->
-    <div>
-      <div>
-        <button class="code-header h2 border-0 rounded-3 w-100 pb-1" type="button" data-bs-toggle="collapse"
-          href="#codeGetValues" aria-expanded="false" aria-controls="codeGetValues">
-          Function: getValues
-        </button>
-      </div>
+    <div class="accordion accordion-flush" id="accordionCode">
+      <!-- Function: getValues -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingGetValues">
+          <button class="accordion-button code-header collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseGetValues" aria-expanded="true" aria-controls="collapseGetValues">
+            Function: getValues
+          </button>
+        </h2>
+        <div id="collapseGetValues" class="accordion-collapse collapse" aria-labelledby="headingGetValues">
+          <div class="row container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle">
+            <div class="col-12 col-lg-8">
+              <pre class="line-numbers">
+                <code class="language-js">
+                  function getValues(inputId, outputId) {
+                    let toCheck = document.getElementById(inputId).value;
+                    let results = checkForPalindrome(toCheck);
+                    displayResults(results, outputId);
+                  }
+                </code>
+              </pre>
+            </div>
 
-      <div id="codeGetValues"
-        class="row collapse show container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle rounded-3">
-        <div class="col-12 col-lg-8">
-          <pre class="line-numbers">
-              <code class="language-js">
-                function getValues(inputId, outputId) {
-                  let toCheck = document.getElementById(inputId).value;
-                  let results = checkForPalindrome(toCheck);
-                  displayResults(results, outputId);
-                }
-              </code>
-            </pre>
+            <div class="col-12 col-lg-4">
+              <p>
+                This function receives IDs for the input and output elements, using
+                the former to obtain the user's input value. The latter is used to
+                output the results of the palindrome check done on the input.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div class="col-12 col-lg-4">
-          <p>
-            This function receives IDs for the input and output elements, using
-            the former to obtain the user's input value. The latter is used to
-            output the results of the palindrome check done on the input.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Function: checkForPalindrome -->
-    <div>
-      <div>
-        <button class="code-header h2 border-0 rounded-3 w-100 pb-1" type="button" data-bs-toggle="collapse"
-          href="#codeCheckForPalindrome" aria-expanded="false" aria-controls="codeCheckForPalindrome">
-          Function: checkForPalindrome
-        </button>
       </div>
 
-      <div id="codeCheckForPalindrome"
-        class="row collapse show container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle rounded-3">
-        <div class="col-12 col-lg-8">
-          <pre class="line-numbers">
-              <code class="language-js">
-                function checkForPalindrome(toCheck) {
-                  let results = {
-                    inputEmpty: false,
-                    onlyPunctWS: false,
-                    isPalindrome: true,
-                    reverse: null,
-                  };
-                
-                  if (!toCheck) {
-                    results.inputEmpty = true;
-                    results.isPalindrome = false;
-                  } else {
-                    let cleanString = toCheck.replace(/[^a-z0-9]/gi, '');
-                
-                    if (!cleanString) {
-                      results.onlyPunctWS = true;
+      <!-- Function: checkForPalindrome -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingCheckForPalindrome">
+          <button class="accordion-button code-header collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseCheckForPalindrome" aria-expanded="true" aria-controls="collapseCheckForPalindrome">
+            Function: checkForPalindrome
+          </button>
+        </h2>
+        <div id="collapseCheckForPalindrome" class="accordion-collapse collapse" aria-labelledby="headingCheckForPalindrome">
+          <div class="row container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle">
+            <div class="col-12 col-lg-8">
+              <pre class="line-numbers">
+                <code class="language-js">
+                  function checkForPalindrome(toCheck) {
+                    let results = {
+                      inputEmpty: false,
+                      onlyPunctWS: false,
+                      isPalindrome: true,
+                      reverse: null,
+                    };
+                  
+                    if (!toCheck) {
+                      results.inputEmpty = true;
                       results.isPalindrome = false;
                     } else {
-                      cleanString = cleanString.toLowerCase();
-                      let i = 0, j = cleanString.length - 1;
-                      results.reverse = new Array(cleanString.length);
-                
-                      while (results.isPalindrome && i < j) {
-                        if (cleanString[i] != cleanString[j]) results.isPalindrome = false;
-                        results.reverse[i] = cleanString[j];
-                        results.reverse[j--] = cleanString[i++];
+                      let cleanString = toCheck.replace(/[^a-z0-9]/gi, '');
+                  
+                      if (!cleanString) {
+                        results.onlyPunctWS = true;
+                        results.isPalindrome = false;
+                      } else {
+                        cleanString = cleanString.toLowerCase();
+                        let i = 0, j = cleanString.length - 1;
+                        results.reverse = new Array(cleanString.length);
+                  
+                        while (results.isPalindrome && i < j) {
+                          if (cleanString[i] != cleanString[j]) results.isPalindrome = false;
+                          results.reverse[i] = cleanString[j];
+                          results.reverse[j--] = cleanString[i++];
+                        }
+                  
+                        while (i < j) {
+                          results.reverse[i] = cleanString[j];
+                          results.reverse[j--] = cleanString[i++];
+                        }
+                  
+                        if (i == j) {
+                          results.reverse[i] = cleanString[i];
+                        }
+                  
+                        results.reverse = results.reverse.join('');
                       }
-                
-                      while (i < j) {
-                        results.reverse[i] = cleanString[j];
-                        results.reverse[j--] = cleanString[i++];
-                      }
-                
-                      if (i == j) {
-                        results.reverse[i] = cleanString[i];
-                      }
-                
-                      results.reverse = results.reverse.join('');
                     }
+                  
+                    return results;
                   }
-                
-                  return results;
-                }
-              </code>
-            </pre>
-        </div>
+                </code>
+              </pre>
+            </div>
 
-        <div class="col-12 col-lg-4">
-          <p>
-            This function checks if the user's input is in fact a palindrome. All characters
-            that aren't alphanumeric are neglected in the check, and uppercase letters are
-            treated as equivalent to their lowercase counterparts. The return value is an
-            object containing information related to the check: whether the input is a
-            Palindrome, if the input was completely empty, if the input was lacking
-            alphanumeric characters, and what the reverse of the input string is.
-          </p>
+            <div class="col-12 col-lg-4">
+              <p>
+                This function checks if the user's input is in fact a palindrome. All characters
+                that aren't alphanumeric are neglected in the check, and uppercase letters are
+                treated as equivalent to their lowercase counterparts. The return value is an
+                object containing information related to the check: whether the input is a
+                Palindrome, if the input was completely empty, if the input was lacking
+                alphanumeric characters, and what the reverse of the input string is.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Function: codeDisplayResults -->
-    <div>
-      <div>
-        <button class="code-header h2 border-0 rounded-3 w-100 pb-1" type="button" data-bs-toggle="collapse"
-          href="#codeDisplayResults" aria-expanded="false" aria-controls="codeDisplayResults">
-          Function: displayResults
-        </button>
-      </div>
-
-      <div id="codeDisplayResults"
-        class="row collapse show container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle rounded-3">
-        <div class="col-12 col-lg-8">
-          <pre class="line-numbers">
-              <code class="language-js">
-                function displayResults(results, outputId) {
-                  let outputHTML;
-                
-                  if (results.inputEmpty) {
-                    outputHTML = "&lt;h3&gt;Oops, your entry was completely empty!&lt;/h3&gt;" + "&lt;hr&gt;"
-                      + "&lt;p&gt;Enter a phrase that includes characters other than whitespace and punctuation&lt;/p&gt;"
-                  } else if (results.onlyPunctWS) {
-                    outputHTML = "&lt;h3&gt;Oops, your entry only has whitespace and punctuation!&lt;/h3&gt;" + "&lt;hr&gt;"
-                      + "&lt;p&gt;Enter a phrase that includes other characters, like letters and numbers&lt;/p&gt;"
-                  } else {
-                    if (results.isPalindrome) {
-                      outputHTML = "&lt;h3&gt;Well done! You entered a Palindrome!&lt;/h3&gt;" + "&lt;hr&gt;"
-                        + `&lt;p&gt;Your phrase reversed is: ${results.reverse}&lt;/p&gt;`
+      <!-- Function: displayResults -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingDisplayResults">
+          <button class="accordion-button code-header collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseDisplayResults" aria-expanded="true" aria-controls="collapseDisplayResults">
+            Function: displayResults
+          </button>
+        </h2>
+        <div id="collapseDisplayResults" class="accordion-collapse collapse" aria-labelledby="headingDisplayResults">
+          <div class="row container bg-light ms-0 mb-3 p-3 border border-1 border-dark-subtle">
+            <div class="col-12 col-lg-8">
+              <pre class="line-numbers">
+                <code class="language-js">
+                  function displayResults(results, outputId) {
+                    let outputHTML;
+                  
+                    if (results.inputEmpty) {
+                      outputHTML = "&lt;h3&gt;Oops, your entry was completely empty!&lt;/h3&gt;" + "&lt;hr&gt;"
+                        + "&lt;p&gt;Enter a phrase that includes characters other than whitespace and punctuation&lt;/p&gt;"
+                    } else if (results.onlyPunctWS) {
+                      outputHTML = "&lt;h3&gt;Oops, your entry only has whitespace and punctuation!&lt;/h3&gt;" + "&lt;hr&gt;"
+                        + "&lt;p&gt;Enter a phrase that includes other characters, like letters and numbers&lt;/p&gt;"
                     } else {
-                      outputHTML = "&lt;h3&gt;Too bad! You didn't enter a Palindrome...&lt;/h3&gt;" + "&lt;hr&gt;"
-                        + `&lt;p&gt;Your phrase reversed is: ${results.reverse}&lt;/p&gt;`
+                      if (results.isPalindrome) {
+                        outputHTML = "&lt;h3&gt;Well done! You entered a Palindrome!&lt;/h3&gt;" + "&lt;hr&gt;"
+                          + `&lt;p&gt;Your phrase reversed is: ${results.reverse}&lt;/p&gt;`
+                      } else {
+                        outputHTML = "&lt;h3&gt;Too bad! You didn't enter a Palindrome...&lt;/h3&gt;" + "&lt;hr&gt;"
+                          + `&lt;p&gt;Your phrase reversed is: ${results.reverse}&lt;/p&gt;`
+                      }
+                    }
+                  
+                    let output = document.getElementById(outputId);
+                    output.innerHTML = outputHTML;
+                    output.classList.remove('invisible');
+                  
+                    if (results.isPalindrome) {
+                      output.classList.add('bg-success-subtle');
+                      output.classList.remove('bg-danger-subtle');
+                    } else {
+                      output.classList.add('bg-danger-subtle');
+                      output.classList.remove('bg-success-subtle');
                     }
                   }
-                
-                  let output = document.getElementById(outputId);
-                  output.innerHTML = outputHTML;
-                  output.classList.remove('invisible');
-                
-                  if (results.isPalindrome) {
-                    output.classList.add('bg-success-subtle');
-                    output.classList.remove('bg-danger-subtle');
-                  } else {
-                    output.classList.add('bg-danger-subtle');
-                    output.classList.remove('bg-success-subtle');
-                  }
-                }
-              </code>
-            </pre>
-        </div>
+                </code>
+              </pre>
+            </div>
 
-        <div class="col-12 col-lg-4">
-          <p>
-            This function receives the returned object from <code>checkForPalindrome</code>
-            and uses it to determine the output to display on the webpage. There are 4
-            possible types of messages: if the input is empty, if it lacks alphanumeric characters,
-            if it is not a palindrome, and if it is a palindrome. In the latter 2 cases, the
-            reverse string is shown in the output. In the case where a palindrome is present,
-            the output message has a green background. The background is red in all other cases.
-          </p>
+            <div class="col-12 col-lg-4">
+              <p>
+                This function receives the returned object from <code>checkForPalindrome</code>
+                and uses it to determine the output to display on the webpage. There are 4
+                possible types of messages: if the input is empty, if it lacks alphanumeric characters,
+                if it is not a palindrome, and if it is a palindrome. In the latter 2 cases, the
+                reverse string is shown in the output. In the case where a palindrome is present,
+                the output message has a green background. The background is red in all other cases.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
